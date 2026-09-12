@@ -1,11 +1,13 @@
 # api/index.py
-"""Vercel serverless entrypoint for ShieldGrid FastAPI app."""
+"""Vercel serverless entrypoint for ShieldGrid FastAPI app.
+Uses Mangum to adapt the FastAPI ASGI app to Vercel's Lambda style handler.
+"""
 import os
 import sys
 from pathlib import Path
 
 # Ensure backend code is importable from the project root
-PROJECT_ROOT = Path(__file__).resolve().parent.parent   # shieldgrid_2_0_copy/
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 backend_path = PROJECT_ROOT / "backend"
 if str(backend_path) not in sys.path:
     sys.path.insert(0, str(backend_path))
