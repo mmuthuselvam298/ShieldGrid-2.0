@@ -14,4 +14,3 @@ sqlalchemy==2.0.36
 python-multipart==0.0.20
 mangum==0.17.0
 numpy==1.26.4
-pandas==2.2.3
