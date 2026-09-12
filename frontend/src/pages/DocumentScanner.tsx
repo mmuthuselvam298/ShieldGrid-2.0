@@ -95,13 +95,14 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({ onScanComplete
   };
 
   return (
-    <div className="p-8 max-w-5xl mx-auto space-y-8 select-none">
+    <div className="p-5 sm:p-8 max-w-6xl mx-auto space-y-8">
       <div>
-        <h1 className="text-xl font-mono font-bold uppercase tracking-wider text-vault-text">
-          Forensic Document Ingestion & PII Scanner
+        <p className="text-sm font-medium text-vault-blue mb-2">Document intelligence</p>
+        <h1 className="text-3xl font-bold tracking-tight text-vault-text">
+          Scan a document
         </h1>
-        <p className="text-xs font-mono text-vault-muted mt-1">
-          Upload PDF, DOCX, Images, or TXT for multi-engine privacy intelligence, OCR, and confidence scoring.
+        <p className="text-sm text-vault-muted mt-2">
+          Upload a document to detect sensitive information and prepare it for protection.
         </p>
       </div>
 
@@ -124,8 +125,8 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({ onScanComplete
               isDragging
                 ? 'border-vault-crimson bg-vault-crimsonBg/20'
                 : file
-                ? 'border-vault-emerald/50 bg-vault-card'
-                : 'border-vault-border bg-vault-card hover:border-vault-borderLight'
+                ? 'border-emerald-300 bg-emerald-50'
+                : 'border-vault-border bg-white hover:border-blue-300 hover:bg-blue-50/30'
             }`}
           >
             {isProcessing && (
@@ -140,29 +141,29 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({ onScanComplete
               </div>
             )}
 
-            <div className="w-16 h-16 rounded-2xl bg-vault-bg border border-vault-border flex items-center justify-center mb-4 text-vault-muted group-hover:text-vault-text transition-colors">
+            <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-4 text-vault-muted">
               <UploadCloud className="w-8 h-8 text-vault-cyan" />
             </div>
 
             {file ? (
               <div className="space-y-2">
-                <div className="text-sm font-medium text-vault-text font-mono">{file.name}</div>
-                <div className="text-xs text-vault-muted font-mono">
-                  {(file.size / 1024).toFixed(1)} KB • Ready for Forensic Analysis
+                <div className="text-sm font-semibold text-vault-text">{file.name}</div>
+                <div className="text-xs text-vault-muted">
+                  {(file.size / 1024).toFixed(1)} KB · Ready to scan
                 </div>
                 <button
                   onClick={() => setFile(null)}
-                  className="text-xs text-vault-crimson hover:underline font-mono"
+                  className="text-xs text-vault-blue hover:underline"
                 >
                   Choose a different file
                 </button>
               </div>
             ) : (
               <div className="space-y-2">
-                <p className="text-sm font-medium text-vault-text font-mono">
-                  Drag & Drop Document Here, or{' '}
-                  <label className="text-vault-cyan hover:underline cursor-pointer">
-                    Browse File
+                <p className="text-sm font-medium text-vault-text">
+                  Drag and drop a file here, or{' '}
+                  <label className="text-vault-blue hover:underline cursor-pointer">
+                    choose a file
                     <input
                       type="file"
                       className="hidden"
@@ -171,8 +172,8 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({ onScanComplete
                     />
                   </label>
                 </p>
-                <p className="text-xs text-vault-subtle font-mono">
-                  Supports PDF, DOCX, Scanned Images (PNG/JPG with OCR), and TXT up to 25MB
+                <p className="text-xs text-vault-subtle">
+                  PDF, DOCX, PNG, JPG or TXT · up to 25 MB
                 </p>
               </div>
             )}
@@ -182,7 +183,7 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({ onScanComplete
           {file && !isProcessing && (
             <button
               onClick={handleStartScan}
-              className="w-full py-3 rounded-xl bg-vault-crimson hover:bg-red-600 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-lg shadow-vault-crimson/20"
+              className="w-full py-3 rounded-lg bg-vault-blue hover:bg-blue-700 text-white text-sm font-semibold transition-all flex items-center justify-center space-x-2 shadow-sm"
             >
               <span>Execute Forensic Privacy Scan</span>
               <ArrowRight className="w-4 h-4" />
@@ -193,11 +194,11 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({ onScanComplete
         {/* Policy Selector & One-Click Demos (1 col) */}
         <div className="space-y-6">
           {/* Policy Preset Selection */}
-          <div className="bg-vault-card border border-vault-border rounded-xl p-5 space-y-3">
+          <div className="workspace-card p-5 space-y-3">
             <div className="flex items-center space-x-2 border-b border-vault-border pb-2">
               <ShieldCheck className="w-4 h-4 text-vault-emerald" />
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
-                Active Privacy Policy
+              <h3 className="text-sm font-semibold text-vault-text">
+                Privacy policy
               </h3>
             </div>
             <div className="space-y-2">
@@ -232,11 +233,11 @@ export const DocumentScanner: React.FC<DocumentScannerProps> = ({ onScanComplete
           </div>
 
           {/* Quick Synthetic Demo Loader */}
-          <div className="bg-vault-card border border-vault-border rounded-xl p-5 space-y-3">
+          <div className="workspace-card p-5 space-y-3">
             <div className="flex items-center space-x-2 border-b border-vault-border pb-2">
               <Sparkles className="w-4 h-4 text-vault-amber" />
-              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
-                Instant Synthetic Demos
+              <h3 className="text-sm font-semibold text-vault-text">
+                Try a sample document
               </h3>
             </div>
             <p className="text-[11px] text-vault-subtle">

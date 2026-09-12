@@ -155,9 +155,9 @@ export const DocumentReview: React.FC<DocumentReviewProps> = ({ documentId, onNa
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] overflow-hidden select-none bg-vault-bg">
+    <div className="flex flex-col min-h-[calc(100vh-4.5rem)] overflow-hidden bg-vault-bg">
       {/* Forensic Workstation Top Banner */}
-      <div className="h-12 border-b border-vault-border bg-vault-card px-6 flex items-center justify-between">
+      <div className="min-h-14 border-b border-vault-border bg-white px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
         <div className="flex items-center space-x-4">
           <button
             onClick={() => onNavigate('dashboard')}

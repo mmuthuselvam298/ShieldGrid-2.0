@@ -12,18 +12,19 @@ export const Settings: React.FC = () => {
   };
 
   return (
-    <div className="p-8 max-w-4xl mx-auto space-y-8 select-none font-mono">
+    <div className="p-5 sm:p-8 max-w-4xl mx-auto space-y-8">
       <div>
-        <h1 className="text-xl font-bold uppercase tracking-wider text-vault-text">
-          Vault Configuration & Engine Parameters
+        <p className="text-sm font-medium text-vault-blue mb-2">Workspace preferences</p>
+        <h1 className="text-3xl font-bold tracking-tight text-vault-text">
+          Settings
         </h1>
-        <p className="text-xs text-vault-muted mt-1">
-          Tune retention schedules, OCR pipelines, cryptographic primitives, and security boundaries.
+        <p className="text-sm text-vault-muted mt-2">
+          Manage retention, OCR, storage, and the engines that protect your documents.
         </p>
       </div>
 
       {/* Retention Schedule Card */}
-      <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-4">
+      <div className="workspace-card p-6 space-y-4">
         <div className="flex items-center space-x-2 border-b border-vault-border pb-3">
           <Database className="w-4 h-4 text-vault-cyan" />
           <h2 className="text-xs font-bold uppercase tracking-wider text-vault-text">
@@ -76,7 +77,7 @@ export const Settings: React.FC = () => {
       </div>
 
       {/* Engine Status Grid */}
-      <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-4">
+      <div className="workspace-card p-6 space-y-4">
         <div className="flex items-center space-x-2 border-b border-vault-border pb-3">
           <Server className="w-4 h-4 text-vault-purple" />
           <h2 className="text-xs font-bold uppercase tracking-wider text-vault-text">
@@ -105,7 +106,7 @@ export const Settings: React.FC = () => {
       </div>
 
       {/* Security Disclosures */}
-      <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-3">
+      <div className="workspace-card p-6 space-y-3">
         <div className="flex items-center space-x-2 text-vault-amber">
           <Shield className="w-4 h-4" />
           <h2 className="text-xs font-bold uppercase tracking-wider">

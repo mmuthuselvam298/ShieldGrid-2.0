@@ -65,8 +65,8 @@ export const FindingsPanel: React.FC<FindingsPanelProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <ShieldAlert className="w-4 h-4 text-vault-crimson" />
-            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
-              Privacy Findings ({findings.length})
+            <h3 className="text-sm font-semibold text-vault-text">
+              Privacy findings ({findings.length})
             </h3>
           </div>
           {hasRedactedDoc && (
@@ -258,7 +258,7 @@ export const FindingsPanel: React.FC<FindingsPanelProps> = ({
         <button
           disabled={isRedacting || findings.length === 0}
           onClick={() => onRedactAll(globalMode)}
-          className="w-full py-2.5 rounded-lg bg-vault-crimson hover:bg-red-600 disabled:opacity-50 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-lg shadow-vault-crimson/20"
+          className="w-full py-2.5 rounded-lg bg-vault-blue hover:bg-blue-700 disabled:opacity-50 text-white font-semibold text-sm transition-all flex items-center justify-center space-x-2 shadow-sm"
         >
           {isRedacting ? (
             <>

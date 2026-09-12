@@ -72,19 +72,20 @@ export const Analytics: React.FC = () => {
   };
 
   return (
-    <div className="p-8 max-w-6xl mx-auto space-y-8 select-none">
+    <div className="p-5 sm:p-8 max-w-6xl mx-auto space-y-8">
       <div>
-        <h1 className="text-xl font-mono font-bold uppercase tracking-wider text-vault-text">
-          Privacy Intelligence & Telemetry Analytics
+        <p className="text-sm font-medium text-vault-blue mb-2">Workspace insights</p>
+        <h1 className="text-3xl font-bold tracking-tight text-vault-text">
+          Privacy analytics
         </h1>
-        <p className="text-xs font-mono text-vault-muted mt-1">
-          Forensic distribution metrics, detector precision, and vulnerability posture across all processed assets.
+        <p className="text-sm text-vault-muted mt-2">
+          Understand how documents and sensitive findings move through your workspace.
         </p>
       </div>
 
       {/* Primary KPI Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-vault-card border border-vault-border rounded-xl p-4">
+        <div className="workspace-card p-5">
           <span className="text-[11px] font-mono text-vault-muted">AVG DETECTION CONFIDENCE</span>
           <div className="text-2xl font-mono font-bold text-vault-text mt-1">
             {Math.round(data.average_confidence * 100)}%
@@ -92,7 +93,7 @@ export const Analytics: React.FC = () => {
           <span className="text-[10px] text-vault-emerald font-mono">Calibrated Multi-Engine</span>
         </div>
 
-        <div className="bg-vault-card border border-vault-border rounded-xl p-4">
+        <div className="workspace-card p-5">
           <span className="text-[11px] font-mono text-vault-muted">TOTAL PII DISCOVERED</span>
           <div className="text-2xl font-mono font-bold text-vault-crimson mt-1">
             {data.total_entities_detected}
@@ -100,7 +101,7 @@ export const Analytics: React.FC = () => {
           <span className="text-[10px] text-vault-muted font-mono">Across all ingested pages</span>
         </div>
 
-        <div className="bg-vault-card border border-vault-border rounded-xl p-4">
+        <div className="workspace-card p-5">
           <span className="text-[11px] font-mono text-vault-muted">OCR INVOCATIONS</span>
           <div className="text-2xl font-mono font-bold text-vault-purple mt-1">
             {data.ocr_usage_count}
@@ -108,7 +109,7 @@ export const Analytics: React.FC = () => {
           <span className="text-[10px] text-vault-muted font-mono">Scanned & image documents</span>
         </div>
 
-        <div className="bg-vault-card border border-vault-border rounded-xl p-4">
+        <div className="workspace-card p-5">
           <span className="text-[11px] font-mono text-vault-muted">PERMANENT REDACTIONS</span>
           <div className="text-2xl font-mono font-bold text-vault-emerald mt-1">
             {data.total_redactions_applied}
@@ -120,7 +121,7 @@ export const Analytics: React.FC = () => {
       {/* Chart Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Entity Distribution Bar Chart */}
-        <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-4">
+        <div className="workspace-card p-6 space-y-4">
           <div className="flex items-center space-x-2 border-b border-vault-border pb-2">
             <BarChart3 className="w-4 h-4 text-vault-cyan" />
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
@@ -148,7 +149,7 @@ export const Analytics: React.FC = () => {
         </div>
 
         {/* Risk Distribution Pie Chart */}
-        <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-4">
+        <div className="workspace-card p-6 space-y-4">
           <div className="flex items-center space-x-2 border-b border-vault-border pb-2">
             <PieIcon className="w-4 h-4 text-vault-amber" />
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
@@ -183,7 +184,7 @@ export const Analytics: React.FC = () => {
       </div>
 
       {/* Detection Engine Comparison */}
-      <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-4">
+      <div className="workspace-card p-6 space-y-4">
         <div className="flex items-center space-x-2 border-b border-vault-border pb-2">
           <Cpu className="w-4 h-4 text-vault-purple" />
           <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">

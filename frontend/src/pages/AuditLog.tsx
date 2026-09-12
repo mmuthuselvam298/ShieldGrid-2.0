@@ -32,20 +32,21 @@ export const AuditLog: React.FC = () => {
   };
 
   return (
-    <div className="p-8 max-w-6xl mx-auto space-y-8 select-none">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-vault-border pb-6">
+    <div className="p-5 sm:p-8 max-w-6xl mx-auto space-y-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-xl font-mono font-bold uppercase tracking-wider text-vault-text">
-            Tamper-Evident Privacy Audit Log
+          <p className="text-sm font-medium text-vault-blue mb-2">Governance</p>
+          <h1 className="text-3xl font-bold tracking-tight text-vault-text">
+            Audit trail
           </h1>
-          <p className="text-xs font-mono text-vault-muted mt-1">
-            Immutable forensic activity ledger recording all ingestion, inspection, redaction, and asset deletions.
+          <p className="text-sm text-vault-muted mt-2">
+            A clear record of document uploads, analysis, redaction, and exports.
           </p>
         </div>
 
         <button
           onClick={handleExportJSON}
-          className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-vault-card hover:bg-vault-cardHover border border-vault-border text-vault-text font-mono text-xs transition-all self-start md:self-auto"
+          className="flex items-center space-x-2 px-3.5 py-2.5 rounded-lg bg-white hover:bg-slate-50 border border-vault-border text-vault-text text-sm transition-all self-start md:self-auto"
         >
           <Download className="w-4 h-4 text-vault-cyan" />
           <span>Export Audit Trail (JSON)</span>
@@ -53,7 +54,7 @@ export const AuditLog: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-vault-card border border-vault-border rounded-xl p-4 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+      <div className="workspace-card p-4 flex flex-wrap items-center justify-between gap-4 text-sm">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <Filter className="w-3.5 h-3.5 text-vault-muted" />
@@ -94,7 +95,7 @@ export const AuditLog: React.FC = () => {
       </div>
 
       {/* Audit Log Stream */}
-      <div className="bg-vault-card border border-vault-border rounded-xl overflow-hidden shadow-xl">
+      <div className="workspace-card overflow-hidden">
         {loading ? (
           <div className="py-16 text-center text-xs font-mono text-vault-muted">
             Loading audit records...

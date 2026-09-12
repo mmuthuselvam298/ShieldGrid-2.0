@@ -82,14 +82,15 @@ export const BatchProcessing: React.FC<BatchProcessingProps> = ({ onNavigate }) 
   };
 
   return (
-    <div className="p-8 max-w-6xl mx-auto space-y-8 select-none">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-vault-border pb-6">
+    <div className="p-5 sm:p-8 max-w-6xl mx-auto space-y-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-1">
         <div>
-          <h1 className="text-xl font-mono font-bold uppercase tracking-wider text-vault-text">
-            Batch Ingestion & Document Redaction Queue
+          <p className="text-sm font-medium text-vault-blue mb-2">Document workspace</p>
+          <h1 className="text-3xl font-bold tracking-tight text-vault-text">
+            Batch processing
           </h1>
-          <p className="text-xs font-mono text-vault-muted mt-1">
-            Process bulk repositories, execute automated multi-engine privacy audits, and export unified sanitized bundles.
+          <p className="text-sm text-vault-muted mt-2">
+            Process multiple documents together and protect them in one workflow.
           </p>
         </div>
 
@@ -97,7 +98,7 @@ export const BatchProcessing: React.FC<BatchProcessingProps> = ({ onNavigate }) 
           <button
             disabled={batchRedacting || documents.length === 0}
             onClick={handleBatchRedactAll}
-            className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-vault-crimson hover:bg-red-600 disabled:opacity-50 text-white font-mono text-xs font-semibold uppercase tracking-wider transition-all shadow-md shadow-vault-crimson/20"
+            className="flex items-center space-x-2 px-3.5 py-2.5 rounded-lg bg-vault-blue hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-semibold transition-all"
           >
             <Lock className="w-4 h-4" />
             <span>{batchRedacting ? 'Redacting Queue...' : 'Redact Entire Batch'}</span>
@@ -105,7 +106,7 @@ export const BatchProcessing: React.FC<BatchProcessingProps> = ({ onNavigate }) 
 
           <button
             onClick={handleDownloadZip}
-            className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-vault-card hover:bg-vault-cardHover border border-vault-border text-vault-emerald font-mono text-xs transition-all"
+            className="flex items-center space-x-2 px-3.5 py-2.5 rounded-lg bg-white hover:bg-slate-50 border border-vault-border text-vault-text text-sm transition-all"
           >
             <Download className="w-4 h-4" />
             <span>Export Batch ZIP</span>
@@ -114,12 +115,12 @@ export const BatchProcessing: React.FC<BatchProcessingProps> = ({ onNavigate }) 
       </div>
 
       {/* Batch Upload Dropzone */}
-      <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-4">
+      <div className="workspace-card p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <UploadCloud className="w-4 h-4 text-vault-cyan" />
-            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
-              Add Files To Ingestion Queue
+            <h3 className="text-sm font-semibold text-vault-text">
+              Add files to the queue
             </h3>
           </div>
           {selectedFiles.length > 0 && (
@@ -162,10 +163,10 @@ export const BatchProcessing: React.FC<BatchProcessingProps> = ({ onNavigate }) 
       </div>
 
       {/* Queue Table */}
-      <div className="bg-vault-card border border-vault-border rounded-xl overflow-hidden shadow-xl">
+      <div className="workspace-card overflow-hidden">
         <div className="px-6 py-4 border-b border-vault-border flex items-center justify-between">
-          <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
-            Ingestion Pipeline Status ({documents.length} records)
+          <h2 className="text-base font-semibold text-vault-text">
+            Documents ({documents.length})
           </h2>
         </div>
 

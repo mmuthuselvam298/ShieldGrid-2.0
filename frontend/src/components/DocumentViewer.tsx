@@ -35,7 +35,7 @@ export const DocumentViewer: React.FC<DocumentViewerProps> = ({
   const handleResetZoom = () => setZoom(100);
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-[#05070a] border border-vault-border rounded-xl overflow-hidden shadow-2xl relative">
+    <div className="flex-1 flex flex-col h-full bg-white border border-vault-border rounded-xl overflow-hidden shadow-sm relative">
       {/* Top Toolbar */}
       <div className="h-12 border-b border-vault-border bg-vault-card px-4 flex items-center justify-between text-xs font-mono">
         <div className="flex items-center space-x-3">

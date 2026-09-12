@@ -2,34 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @theme {
-  --color-vault-bg: #080a0f;
-  --color-vault-card: #0f131d;
-  --color-vault-cardHover: #161b28;
-  --color-vault-border: #1e2638;
-  --color-vault-borderLight: #2d3748;
-  --color-vault-text: #f1f5f9;
-  --color-vault-muted: #94a3b8;
-  --color-vault-subtle: #64748b;
-  --color-vault-crimson: #ef4444;
-  --color-vault-crimsonBg: rgba(239, 68, 68, 0.12);
-  --color-vault-amber: #f59e0b;
-  --color-vault-amberBg: rgba(245, 158, 11, 0.12);
-  --color-vault-cyan: #06b6d4;
-  --color-vault-cyanBg: rgba(6, 182, 212, 0.12);
-  --color-vault-purple: #a855f7;
-  --color-vault-purpleBg: rgba(168, 85, 247, 0.12);
-  --color-vault-emerald: #10b981;
-  --color-vault-emeraldBg: rgba(16, 185, 129, 0.12);
-  --color-vault-blue: #3b82f6;
-  --color-vault-blueBg: rgba(59, 130, 246, 0.12);
+  --color-vault-bg: #f8fafc;
+  --color-vault-card: #ffffff;
+  --color-vault-cardHover: #f1f5f9;
+  --color-vault-border: #e2e8f0;
+  --color-vault-borderLight: #cbd5e1;
+  --color-vault-text: #172033;
+  --color-vault-muted: #64748b;
+  --color-vault-subtle: #94a3b8;
+  --color-vault-crimson: #dc2626;
+  --color-vault-crimsonBg: #fef2f2;
+  --color-vault-amber: #d97706;
+  --color-vault-amberBg: #fffbeb;
+  --color-vault-cyan: #0e7490;
+  --color-vault-cyanBg: #ecfeff;
+  --color-vault-purple: #2563eb;
+  --color-vault-purpleBg: #eff6ff;
+  --color-vault-emerald: #16a34a;
+  --color-vault-emeraldBg: #f0fdf4;
+  --color-vault-blue: #2563eb;
+  --color-vault-blueBg: #eff6ff;
 
-  --font-mono: 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace;
+  --font-mono: 'Inter', system-ui, -apple-system, sans-serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background-color: #080a0f;
-  color: #f1f5f9;
+  background-color: #f8fafc;
+  color: #172033;
   font-family: var(--font-sans);
   min-height: 100vh;
   margin: 0;
@@ -41,20 +41,37 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0e17;
+  background: #f8fafc;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e2638;
+  background: #cbd5e1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e3a52;
+  background: #94a3b8;
 }
 
-/* Grid background subtle effect */
 .vault-grid-bg {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(30, 38, 56, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(30, 38, 56, 0.25) 1px, transparent 1px);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.2);
+  outline-offset: 2px;
+}
+
+.workspace-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.workspace-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
 }

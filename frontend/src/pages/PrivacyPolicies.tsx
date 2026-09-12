@@ -55,20 +55,21 @@ export const PrivacyPolicies: React.FC = () => {
   };
 
   return (
-    <div className="p-8 max-w-6xl mx-auto space-y-8 select-none">
+    <div className="p-5 sm:p-8 max-w-6xl mx-auto space-y-8">
       <div>
-        <h1 className="text-xl font-mono font-bold uppercase tracking-wider text-vault-text">
-          Privacy Policy Governance & Rulesets
+        <p className="text-sm font-medium text-vault-blue mb-2">Governance</p>
+        <h1 className="text-3xl font-bold tracking-tight text-vault-text">
+          Privacy policies
         </h1>
-        <p className="text-xs font-mono text-vault-muted mt-1">
-          Configure statutory compliance profiles (India DPDP Act, GDPR, HIPAA, PCI-DSS) and detection sensitivities.
+        <p className="text-sm text-vault-muted mt-2">
+          Choose the rules that guide detection and redaction across your workspace.
         </p>
       </div>
 
       {/* Preset Cards */}
       <div className="space-y-4">
-        <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-subtle">
-          Standard Policy Presets
+        <h2 className="text-base font-semibold text-vault-text">
+          Policy presets
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {policies.map((p) => {
@@ -81,8 +82,8 @@ export const PrivacyPolicies: React.FC = () => {
                 onClick={() => setActivePolicyId(p.id)}
                 className={`p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between space-y-3 ${
                   isSelected
-                    ? 'bg-vault-card border-vault-crimson shadow-md shadow-vault-crimson/5'
-                    : 'bg-vault-card/60 border-vault-border hover:border-vault-borderLight'
+                    ? 'bg-blue-50 border-blue-300 shadow-sm'
+                    : 'bg-white border-vault-border hover:border-vault-borderLight'
                 }`}
               >
                 <div className="space-y-2">
@@ -110,12 +111,12 @@ export const PrivacyPolicies: React.FC = () => {
       </div>
 
       {/* Custom Policy Builder */}
-      <div className="bg-vault-card border border-vault-border rounded-xl p-6 space-y-6">
+      <div className="workspace-card p-6 space-y-6">
         <div className="flex items-center justify-between border-b border-vault-border pb-4">
           <div className="flex items-center space-x-2">
             <Sliders className="w-4 h-4 text-vault-amber" />
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-vault-text">
-              Custom Policy Builder
+            <h2 className="text-base font-semibold text-vault-text">
+              Custom policy
             </h2>
           </div>
           <button
