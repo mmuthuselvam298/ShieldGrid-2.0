@@ -41,10 +41,12 @@ app = FastAPI(
 )
 
 # Setup CORS
+import os as _os
+_cors_origins = ["*"] if (settings.CORS_ALLOW_ALL or _os.getenv("VERCEL")) else settings.CORS_ORIGINS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    allow_credentials=True,
+    allow_origins=_cors_origins,
+    allow_credentials=False if "*" in _cors_origins else True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
