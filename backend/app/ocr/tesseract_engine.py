@@ -1,9 +1,8 @@
 import os
 import logging
-import cv2
 import numpy as np
-from PIL import Image
-from typing import Dict, Any, List, Tuple
+from PIL import Image, ImageFilter, ImageOps
+from typing import Dict, Any, List
 import pytesseract
 from pytesseract import Output
 from app.core.config import settings
@@ -18,22 +17,22 @@ class OCREngine:
     @staticmethod
     def preprocess_image(image_path: str) -> np.ndarray:
         """
-        Enhance image for OCR: Grayscale, denoising, and adaptive thresholding.
+        Enhance image for OCR using Pillow: Grayscale, sharpening, and thresholding.
+        Returns a numpy array for pytesseract.
         """
-        img = cv2.imread(image_path)
-        if img is None:
-            # Try PIL fallback
-            pil_img = Image.open(image_path).convert("RGB")
-            img = np.array(pil_img)[:, :, ::-1]
+        img = Image.open(image_path).convert("RGB")
 
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        
-        # Denoise
-        denoised = cv2.fastNlMeansDenoising(gray, h=10)
-        
-        # Otsu thresholding
-        _, thresh = cv2.threshold(denoised, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-        return thresh
+        # Convert to grayscale
+        gray = img.convert("L")
+
+        # Sharpen to improve OCR accuracy
+        sharpened = gray.filter(ImageFilter.SHARPEN)
+
+        # Otsu-style threshold via numpy
+        arr = np.array(sharpened)
+        threshold = arr.mean()
+        binary = (arr > threshold).astype(np.uint8) * 255
+        return binary
 
     @staticmethod
     def extract_text_and_boxes(image_path: str) -> Dict[str, Any]:
@@ -42,19 +41,20 @@ class OCREngine:
         """
         try:
             processed = OCREngine.preprocess_image(image_path)
-            
+            pil_processed = Image.fromarray(processed)
+
             # OCR with bounding box data
-            data = pytesseract.image_to_data(processed, lang=settings.TESSERACT_LANG, output_type=Output.DICT)
-            
+            data = pytesseract.image_to_data(pil_processed, lang=settings.TESSERACT_LANG, output_type=Output.DICT)
+
             words = []
             full_text_parts = []
-            
+
             n_boxes = len(data['text'])
             for i in range(n_boxes):
                 text = data['text'][i].strip()
                 conf = int(data['conf'][i])
-                
-                if text and conf > 20: # Filter out noisy empty boxes
+
+                if text and conf > 20:  # Filter out noisy empty boxes
                     full_text_parts.append(text)
                     words.append({
                         "text": text,
@@ -75,7 +75,7 @@ class OCREngine:
             }
         except Exception as e:
             logger.error(f"OCR extraction failed for {image_path}: {e}")
-            # Fallback to direct string conversion
+            # Fallback to direct string extraction
             try:
                 raw_text = pytesseract.image_to_string(Image.open(image_path))
                 return {
